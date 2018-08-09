@@ -1,0 +1,53 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Campaign</li>
+  </ol>
+</nav>
+
+<div class="row justify-content-center">
+  <div *ngIf="campaign" class="campaign-container">
+
+    <div class="section">
+      <h3>Common info</h3>
+
+      <div class="row">
+        <div class="form-group col">
+          <label for="campaign">Name</label>
+          <input type="text" class="form-control" id="campaign" [value]="campaign.name" disabled>
+        </div>
+        <div class="form-group col">
+          <label for="goal">Goal</label>
+          <input type="text" class="form-control" id="goal" [value]="campaign.goal" disabled>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col">
+          <label for="total-budget">Total Budget</label>
+          <input type="number" class="form-control" id="total-budget" [value]="campaign.total_budget" disabled>
+        </div>
+
+        <div class="form-group col">
+          <label for="status">Status</label>
+          <select id="status" class="form-control" disabled [(ngModel)]="campaign.status">
+            <option>Delivering</option>
+            <option>Ended</option>
+            <option>Scheduled</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-section">
+      <app-platform *ngIf="campaign.platforms.facebook.status" [platform]="campaign.platforms.facebook"
+                    platformName="Facebook"></app-platform>
+      <app-platform *ngIf="campaign.platforms.instagram.status" [platform]="campaign.platforms.instagram"
+                    platformName="Instagram"></app-platform>
+      <app-platform *ngIf="campaign.platforms.google.status" [platform]="campaign.platforms.google"
+                    platformName="Google"></app-platform>
+    </div>
+  </div>
+  <div *ngIf="error">Unexpected error</div>
+</div>
+

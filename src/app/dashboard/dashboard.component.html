@@ -1,0 +1,42 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+  </ol>
+</nav>
+<div>
+  <data-table id="my-table"
+              [title]="'Dashboard'"
+              [items]="campaigns"
+              (rowClick)="campaignClick($event)"
+              [pagination]="false">
+    <data-table-column
+      [property]="'name'"
+      [header]="'Campaign'"></data-table-column>
+
+    <data-table-column
+      [property]="'goal'"
+      [header]="'Goal'"></data-table-column>
+
+    <data-table-column
+      [property]="'total_budget'"
+      [header]="'Budget'"></data-table-column>
+
+    <data-table-column
+      [property]="'status'"
+      [header]="'Status'"></data-table-column>
+
+    <data-table-column
+      [property]="'facebook_status'"
+      [header]="'FB'"></data-table-column>
+
+    <data-table-column
+      [property]="'instagram_status'"
+      [header]="'Instagram'"></data-table-column>
+
+    <data-table-column
+      [property]="'google_status'"
+      [header]="'Google'"></data-table-column>
+
+  </data-table>
+</div>
+

@@ -1,0 +1,154 @@
+<div class="section">
+  <h4>{{platformName}}</h4>
+
+  <div class="row">
+    <div class="form-group col">
+      <label for="status">Status</label>
+      <select id="status" class="form-control" disabled [(ngModel)]="platform.status">
+        <option>Delivering</option>
+        <option>Ended</option>
+        <option>Scheduled</option>
+      </select>
+    </div>
+
+    <div class="form-group col">
+      <div class="row">
+        <div class="form-group col">
+          <label for="start-date">Start date</label>
+          <input type="text" class="form-control" id="start-date" [value]="platform.start_date | date" disabled>
+        </div>
+
+        <div class="form-group col">
+          <label for="end-date">End date</label>
+          <input type="text" class="form-control" id="end-date" [value]="platform.end_date | date" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col">
+      <label for="total-budget">Total Budget</label>
+      <input type="number" class="form-control" id="total-budget" [value]="platform.total_budget" disabled>
+    </div>
+
+    <div class="form-group col">
+      <label for="remaining-budget">Remaining Budget</label>
+      <input type="number" class="form-control" id="remaining-budget" [value]="platform.remaining_budget" disabled>
+    </div>
+  </div>
+
+  <div>
+    <h5>Target Audience</h5>
+
+    <div class="row">
+      <div class="form-group col">
+        <label for="languages">Languages</label>
+        <input type="text" class="form-control" id="languages" [value]="platform.target_audience.languages" disabled>
+      </div>
+      <div class="form-group col">
+        <label for="age-range">Languages</label>
+        <input type="text" class="form-control" id="age-range" [value]="platform.target_audience.age_range" disabled>
+      </div>
+      <div class="form-group col">
+        <label for="locations">Locations</label>
+        <input type="text" class="form-control" id="locations" [value]="platform.target_audience.locations" disabled>
+      </div>
+      <div class="form-group col" *ngIf="platform.target_audience.interests">
+        <label for="interests">Interests</label>
+        <input type="text" class="form-control" id="interests" [value]="platform.target_audience.interests" disabled>
+      </div>
+      <div class="form-group col" *ngIf="platform.target_audience.keywords">
+        <label for="keywords">Key words</label>
+        <input type="text" class="form-control" id="keywords" [value]="platform.target_audience.keywords" disabled>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h5>Ad</h5>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group" *ngIf="platform.creatives.header">
+          <label for="header">Header</label>
+          <input type="text" class="form-control" id="header"
+                 [value]="platform.creatives.header" disabled>
+        </div>
+
+        <div class="form-group" *ngIf="platform.creatives.header_1">
+          <label for="header1">Header 1</label>
+          <input type="text" class="form-control" id="header1"
+                 [value]="platform.creatives.header_1" disabled>
+        </div>
+
+        <div class="form-group" *ngIf="platform.creatives.header_2">
+          <label for="header2">Header 2</label>
+          <input type="text" class="form-control" id="header2"
+                 [value]="platform.creatives.header_2" disabled>
+        </div>
+
+        <div class="form-group">
+          <label for="link">Link</label>
+          <input type="url" class="form-control" id="link"
+                 [value]="platform.creatives.url"
+                 disabled>
+        </div>
+
+        <div class="form-group">
+          <label for="header">Description</label>
+          <input type="text" class="form-control" id="description"
+                 [value]="platform.creatives.description"
+                 disabled>
+        </div>
+      </div>
+
+      <div class="col">
+        <img [src]="staticServer + platform.creatives.image" class="ad-img">
+      </div>
+    </div>
+
+
+  </div>
+
+  <div>
+    <h5>Insights</h5>
+    <div class="row">
+      <div class="col">
+        <label>Impressions</label>
+        <span>{{platform.insights.impressions}}</span>
+      </div>
+      <div class="col">
+        <label>Clicks</label>
+        <span>{{platform.insights.clicks}}</span>
+      </div>
+      <div class="col" *ngIf="platform.insights.website_visits">
+        <label>Website visits</label>
+        <span>{{platform.insights.website_visits}}</span>
+      </div>
+      <div class="col" *ngIf="platform.insights.nanos_score">
+        <label>Nanos Score</label>
+        <span>{{platform.insights.nanos_score}}</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label>Cost per click</label>
+        <span>{{platform.insights.cost_per_click}}</span>
+      </div>
+      <div class="col">
+        <label>Click through rate</label>
+        <span>{{platform.insights.click_through_rate}}</span>
+      </div>
+      <div class="col">
+        <label>Advanced KPI 1</label>
+        <span>{{platform.insights.advanced_kpi_1}}</span>
+      </div>
+      <div class="col" *ngIf="platform.insights.advanced_kpi_2">
+        <label>Advanced KPI 2</label>
+        <span>{{platform.insights.advanced_kpi_2}}</span>
+      </div>
+    </div>
+  </div>
+</div>
